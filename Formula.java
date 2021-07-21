@@ -1,7 +1,7 @@
-
+import java.util.ArrayList;
 public interface Formula {
 	
-	public ArrayList<Flavor> allSameCalc(ArrayList<Flavor> productionList, double amount);
+	public ArrayList<Flavor> allSameCalc(ArrayList<Flavor> productionList);
 	public ArrayList<Flavor> differentCalc(ArrayList<Flavor> productionList);
 	
 }

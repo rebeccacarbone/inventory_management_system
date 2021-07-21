@@ -1,13 +1,14 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Production {
 	ArrayList<Flavor> currentInventory;
 	ArrayList<Flavor> productionList;
 	Formula formula;
 	
-	pubic Production(ArrayList<Flavor> inventoryList, String type) {
+	public Production(ArrayList<Flavor> inventoryList, String type) {
 		currentInventory = inventoryList;
-		if(type.equalsIgnoreCase("dough") 
+		if(type.equalsIgnoreCase("dough"))
 			formula = new DoughFormula();
 		else
 			formula = new CookFormula();
@@ -17,7 +18,7 @@ public class Production {
 		UserInput ui = new UserInput();
 		System.out.println("To create a production list for all flavors enter ALL, otherwise enter SPECIFIC");
 		String allOrSpec = ui.getChoice("all", "specific");
-		if(allOrSpec.equalsIgnoreCase("all") 
+		if(allOrSpec.equalsIgnoreCase("all"))
 			productionList = currentInventory;
 		else {
 			System.out.println("Enter desired flavor names separated by commas. Press ENTER when done: ");
@@ -39,12 +40,12 @@ public class Production {
 	}
 	
 	public void calculateAmount() {
-		UserInput ui = new UserInpu();
+		UserInput ui = new UserInput();
 		System.out.println("To calculate all the same amount enter SAME, otherwise enter DIFFERENT");
 		String sameOrDiff = ui.getChoice("same", "different");
 		if(sameOrDiff.equalsIgnoreCase("same")) 
 			productionList = formula.allSameCalc(productionList);
-		else if(sameOrDiff.equalsIgnoreCase("different") 
+		else if(sameOrDiff.equalsIgnoreCase("different"))
 			productionList = formula.differentCalc(productionList);
 	}
 	

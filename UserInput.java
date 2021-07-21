@@ -1,4 +1,5 @@
 import java.util.Scanner; 
+import java.util.InputMismatchException;
 
 public class UserInput {
 
@@ -34,7 +35,7 @@ public class UserInput {
         }
         
         System.out.println("Please enter 'yes' or 'no': ");
-        String validInput = getYesOrNo();
+        String validInput = getChoice(choice1, choice2);
         return validInput;
 	}
 	
@@ -42,6 +43,20 @@ public class UserInput {
 			return input.equalsIgnoreCase(choice1) || input.equalsIgnoreCase(choice2);
 	}
 	
+	public String getString() {
+			Scanner userInput = new Scanner(System.in);
+			String input;
+			
+			try {
+				input = userInput.nextLine();
+				return input;
+			}
+			catch (InputMismatchException e) {
+				System.out.println("Invalid input. Please enter a flavor name:");
+				String validInput = getString();
+				return validInput;
+			}
+	}
 	public String getFlavorList() {
 			
 			Scanner userInput = new Scanner(System.in);
@@ -78,8 +93,8 @@ public class UserInput {
         return validInput.toLowerCase();
 	}
 	
-	public boolean isValidMenuChoice() {
-			return input.equalsIgnoreCase("view") || input.equalsIgnoreCase("update") || input.equalsIgnoreCase("calculate") || input.equalsIgnoreCase("options");
+	public boolean isValidMenuChoice(String input) {
+			return input.equalsIgnoreCase("view") || input.equalsIgnoreCase("create") || input.equalsIgnoreCase("update") || input.equalsIgnoreCase("calculate") || input.equalsIgnoreCase("options");
 	}
 	
 }

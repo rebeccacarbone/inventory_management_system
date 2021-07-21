@@ -1,7 +1,7 @@
-
+import java.util.ArrayList;
 public class DoughFormula implements Formula {
 	
-	public ArrayList<Flavor> allSameCalc(ArrayList<Flavor> productionList, double amount) {
+	public ArrayList<Flavor> allSameCalc(ArrayList<Flavor> productionList) {
 			//to be implemented
 	}
 	
