@@ -6,7 +6,7 @@ public class Flavor {
 	private int desiredPacks;
 	private double desiredDough;
 	private double doughToMake;
-	private int doughToCut;
+	private double doughToCut;
 
 	public Flavor(String name) {
 		flavorName = name;
@@ -30,7 +30,7 @@ public class Flavor {
 		desiredPacks = packs;
 	}
 	
-	public void setDesiredDough(int dough) {
+	public void setDesiredDough(double dough) {
 		desiredDough = dough;
 	}
 	
@@ -46,7 +46,7 @@ public class Flavor {
 		return amountPacks;
 	}
 	
-	public int getAmountDough() {	
+	public double getAmountDough() {	
 		return amountDough;
 	}
 	
@@ -54,15 +54,15 @@ public class Flavor {
 		return desiredPacks;
 	}
 	
-	public int getDesiredDough() {
+	public double getDesiredDough() {
 		return desiredDough;
 	}
 	
-	public int getDoughToMake() {
+	public double getDoughToMake() {
 		return doughToMake;
 	}
 	
-	public int setDoughToCut() {
+	public double getDoughToCut() {
 		return doughToCut;
 	}
 	
