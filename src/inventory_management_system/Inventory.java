@@ -1,45 +1,72 @@
 package inventory_management_system;
-
-import java.util.Scanner;
+/** TO DO:
+ *	ArrayList of InventoryItems
+ * 	Update DB
+ *  Add new Item
+ *  Calculate production consistency
+ */
 import java.util.ArrayList;
 import java.io.File;
 
 public class Inventory {
-private ArrayList<Flavor> inventoryList;
-
+	private ArrayList<InventoryItem> inventory = new ArrayList<>();
+	
 	public Inventory() {
-		fillListFromDatabase();
+		
+	}
+	public Inventory(Connection con) {
+		fillInventory(con);
 	}
 	
-	public void fillListFromInput() {
+	private void fillInventory(Connection con) {
+		//TODO once DB is set up
+	}
+	
+	public void updateInventory() {
 		UserInput ui = new UserInput();
-		String choice = "yes";
-		String name;
-		int amountOfPacks, amountOfDough;
-		System.out.println("Enter the first flavor you would like to add: ");
-		while(!choice.equalsIgnoreCase("no")) {
-			name = ui.getString();
-			System.out.println("Enter amount in packs (0, 20, etc.): ");
-			amountOfPacks = ui.getInt();
-			System.out.println("Enter amount of dough (batches) (0, 20, etc.): ");
-			amountOfDough = ui.getInt();
-			inventoryList.add(new Flavor(name, amountOfPacks, amountOfDough));
-			System.out.println("Would you like to add another flavor?");
-			choice = ui.getChoice("yes", "no");
+		int cut = 0;
+		int stock = 0;
+		for(InventoryItem item: inventory) {
+			System.out.println("Enter amount cut for " + item.getFlavor());
+			cut = ui.getInt();
+			System.out.println("Enter current stock for " + item.getFlavor());
+			stock = ui.getInt();
+			item.updateStock(cut, stock);
+		}
+		//TODO: implement updateDB
+	}
+	
+	public void editInventory() {
+		//ask if user wants to add or delete flavor(s)
+		//add - go to addFlavor()
+		//delete - go to deleteFlavor()
+		
+		System.out.println("Enter 'add' to add new flavor(s) or 'delete' to delete flavor(s)");
+		//TODO: implement getAddOrDelete in UserInput
+		
+	}
+	
+	private void addFlavor() {
+		//enter flavor name & current stock
+		//append to inventory
+		//ask if they want to add another & repeat
+		//update in DB
+	}
+	
+	private void deleteFlavor() {
+		//enter flavor name to delete
+		//search arraylist for name
+		//if it exists - remove
+		//if not - error
+		//ask if they would like to remove anything else & repeat
+		//update in DB
+	}
+	
+	public void viewInventory() {
+		if(!inventory.isEmpty()) {
+			toString();
 		}
 	}
 	
-	private void fillListFromDatabase() {
-		//in process of setting up AWS environment
-	}
 	
-	public void calculateProdQuantity() {
-		UserInput ui = new UserInput();
-		System.out.println("Do you want to calculate a DOUGH production or a COOKING production?");
-		String type = ui.getChoice("dough", "cooking");
-		
-		Production prod = new Production(inventoryList, type);
-		//prod.getFlavors();
-		//prod.calculateAmount();
-	}
 }

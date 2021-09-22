@@ -7,32 +7,30 @@ public static void main(String[] args) {
 }
 
 public static void menu() {
+	Connection conn = new Connection();
+	conn.getConnection();
+	Inventory inventory = new Inventory(conn);
 	UserInput ui = new UserInput();
+	System.out.println("Welcome to Welsh Baker Inventory Management");
+	int choice = -1;
 	
-	while(true) {
-		System.out.println("What would you like to do? /nOptions: /nView Inventory (Enter 'view') /nCreate Inventory /nUpdate Inventory (Enter 'update') /nCalculate a production quantity (Enter 'calculate') /nExit");
-		String choice = ui.getMenuChoice();
+	while(choice != 0) {
+		System.out.println("0)Exit \n1) View current inventory \n2)Update inventory \n3)Edit inventory \n4)Calculate percent duds");
+		choice = ui.getInt();
+		
 		switch(choice) {
-			case "view":
-				break;
-			case "create":
-				break;
-			case "update":
-				break;
-			case "calculate":
-				break;
-			case "exit":
-				exit();
+		case 1: inventory.viewInventory();
+		break;
+		case 2: inventory.updateInventory();
+		break;
+		case 3: inventory.editInventory();
+		break;
+		
 		}
-		
-		
 	}
+	
 }
 
-public static Inventory readInventoryFromDB() {
-	return new Inventory();
-	
-}
 
 public static void exit() {
 	//TBA
