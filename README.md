@@ -1,10 +1,12 @@
 ## Inventory Management System
 
 ## About
-The Inventory Management System is a Java application that will work with AWS to manage database information.
-Once completed, the system will be used by my parents in their business's daily operations. This all-in-one program allows the inventory amounts to be easily updated and saved so that the information is accessible from anywhere. Production quantities can be calculated with a single command or set individually, and are then displayed to the user in an easy to read format. 
+**This project is currently in progress due to a complete re-design of the project structure from working with .txt files to a relational database.** 
+<br />
+<br />
+Upon completion, the program will allow the user, specifically the owners of The Welsh Baker in Santa Clarita, CA, to update their stock and calculate percent error in their baking productions. This is being written to help their company track when a batch underperforms, so that they can accurately test new cooking techniques and recipe changes. As an employee of the company I have determined that this is a necessary tool in order to limit wasted resources.
 
-FILES:
+## Future Plans
+I am currently learning to set up and work with a relational database. Once my local host is set up I will be implementing Java code to interact with the database. The program will initially have a command line interface, as the client would prefer this. I plan to create a User Interface with JavaFX once the program is fully functional. 
 
-- Main.java runs the system
-- Test.txt is the inventory file being written to and read from
+
